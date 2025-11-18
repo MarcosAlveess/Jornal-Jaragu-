@@ -1,0 +1,6 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+  <rect width="100%" height="100%" fill="#f3e5d8"/>
+  <rect x="60" y="80" width="680" height="380" fill="#d9b48a" stroke="#b27f58" stroke-width="6"/>
+  <text x="50%" y="85%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="28" fill="#6b3f2a">Loja local (placeholder)</text>
+</svg>

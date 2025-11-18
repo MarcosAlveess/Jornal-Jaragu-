@@ -1,0 +1,259 @@
+/* Simple responsive styling for the news-like layout */
+:root{
+  --max-width:1100px;
+  --accent:#111;
+  --muted:#666;
+}
+
+/* ROLAGEM SUAVE */
+html {
+  scroll-behavior: smooth; 
+}
+
+*{box-sizing:border-box}
+body{
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin:0;
+  color:#222;
+  background:#fff;
+  line-height:1.4;
+  /* CORREÇÃO PARA CABEÇALHO FIXO: Empurra o conteúdo para baixo */
+  padding-top: 70px; 
+}
+
+.site-header{
+  /* FIXO em 100% da largura da tela */
+  position: fixed; 
+  top: 0;
+  width: 100%; 
+  z-index: 10;
+  background:#fff; 
+  border-bottom:1px solid #eee;
+  padding:0; /* Remove padding daqui para adicionar no container */
+}
+
+/* Container interno do header (Limita a largura do conteúdo) */
+.header-container {
+  max-width: var(--max-width); 
+  margin: 0 auto; /* Centraliza o conteúdo interno */
+  padding: 18px 16px; /* Adiciona o padding aqui */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.brand h1{
+  margin:0;
+  font-size:2rem;
+  letter-spacing:2px;
+}
+.brand .tag{
+  margin:4px 0 0;
+  font-size:0.85rem;
+  letter-spacing:3px;
+  color:var(--muted);
+}
+
+/* Navigation */
+.main-nav{position:relative}
+.main-nav button{
+  display:none;
+  background:transparent;
+  border:1px solid #ddd;
+  padding:8px 10px;
+  border-radius:6px;
+  cursor:pointer;
+}
+.main-nav ul{
+  display:flex;
+  gap:18px;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.main-nav a{
+  text-decoration:none;
+  color:var(--accent);
+  font-weight:700;
+  text-transform:uppercase;
+  font-size:0.85rem;
+  /* EFEITO HOVER: Transição suave */
+  transition: color 0.3s ease; 
+}
+/* EFEITO HOVER: Destaque ao passar o mouse */
+.main-nav a:hover {
+  color: #000; 
+  text-decoration: underline;
+}
+
+/* Hero */
+.hero{
+  position:relative;
+  max-width:var(--max-width);
+  /* Margem ajustada para ter mais espaço abaixo do menu */
+  margin: 40px auto 20px auto; 
+}
+.hero img{
+  width:100%;
+  /* ALTURA AJUSTADA */
+  height:300px;
+  object-fit:cover;
+  display:block;
+}
+.hero-overlay{
+  position:absolute;
+  left:24px;
+  bottom:24px;
+  background:rgba(0,0,0,0.6);
+  color:#fff;
+  padding:18px 22px;
+  max-width:80%;
+}
+.hero-overlay h2{
+  margin:0;
+  font-size:1.6rem;
+  line-height:1.1;
+}
+
+/* Estilo para a seção do texto da reportagem (usada para Grande Reportagem, Perfil, Patrocinada) */
+.report-content {
+  max-width: 800px; /* Largura ideal para leitura */
+  margin: 40px auto;
+  padding: 0 16px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  /* CORREÇÃO AQUI: Garante que o elemento não seja coberto pelo menu fixo ao rolar */
+  scroll-margin-top: 80px; 
+}
+
+.report-content h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.report-content h3 {
+  font-size: 1.6rem;
+  margin-top: 30px;
+  color: var(--accent);
+}
+
+.report-content h4 {
+  font-size: 1.3rem;
+  margin-top: 25px;
+  color: #444;
+}
+
+.report-content .intro {
+  font-style: italic;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Grid of articles */
+.grid{
+  max-width:var(--max-width);
+  margin:20px auto;
+  display:grid;
+  grid-template-columns:1fr 1fr 380px;
+  gap:20px;
+  padding:0 16px 60px;
+  /* CORREÇÃO AQUI: Garante que o elemento não seja coberto pelo menu fixo ao rolar */
+  scroll-margin-top: 80px; 
+}
+
+.card, .profile{
+  background:#fff;
+  border:1px solid #eee;
+  overflow:hidden;
+}
+
+/* Estiliza o link dentro do card para ser o elemento principal */
+.card a {
+    text-decoration: none; 
+    color: inherit; 
+    display: block; 
+}
+.card a:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Efeito de elevação no hover */
+}
+
+.card img, .profile img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  display:block;
+}
+.card-content{
+  padding:14px;
+}
+.card-content h4{
+  margin:0 0 8px;
+  color:var(--muted);
+  text-transform:uppercase;
+  font-size:0.75rem;
+}
+.card-content h3{margin:0 0 8px}
+.card-content p{margin:0;color:#444;font-size:0.95rem}
+
+/* Footer */
+.site-footer{
+  border-top:1px solid #eee;
+  padding:18px;
+  text-align:center;
+  color:var(--muted);
+}
+
+/* Estilo para o Botão "Voltar ao Topo" */
+.back-to-top {
+  position: fixed;
+  bottom: 20px; 
+  right: 20px; 
+  z-index: 100; 
+  /* ESCONDIDO POR PADRÃO, VISÍVEL VIA JS */
+  display: none; 
+}
+
+.back-to-top a {
+  display: block;
+  background: var(--accent); 
+  color: #fff; 
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.3s ease;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.back-to-top a:hover {
+  background: #333; 
+}
+
+
+/* Responsive */
+@media (max-width:900px){
+  .grid{grid-template-columns:1fr 1fr}
+  .hero img{height:240px} 
+}
+@media (max-width:700px){
+  body {
+    /* Ajusta o padding para celular, caso a barra de navegação fique mais alta */
+    padding-top: 100px; 
+  }
+  .header-container {
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+  }
+  .main-nav button{display:inline-block}
+  .main-nav ul{display:none;flex-direction:column;background:#fff;padding:10px;border-radius:8px;position:absolute;right:0;top:48px;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+  .main-nav ul.open{display:flex}
+  .grid{grid-template-columns:1fr; padding-bottom:40px}
+  .hero img{height:200px} 
+  .hero-overlay{left:12px;right:12px;max-width:unset}
+  .report-content {font-size: 1rem;}
+}

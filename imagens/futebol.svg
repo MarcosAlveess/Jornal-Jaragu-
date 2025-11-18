@@ -1,0 +1,6 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+  <rect width="100%" height="100%" fill="#e9c89f"/>
+  <circle cx="50%" cy="40%" r="90" fill="#c68b58" stroke="#a35f2f" stroke-width="8"/>
+  <text x="50%" y="80%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="28" fill="#5a3b2a">Futebol de várzea (placeholder)</text>
+</svg>
