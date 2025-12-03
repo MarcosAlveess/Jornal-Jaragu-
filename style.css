@@ -91,7 +91,6 @@ body{
 .hero{
   position:relative;
   max-width:var(--max-width);
-  /* Margem ajustada para ter mais espaço abaixo do menu */
   margin: 40px auto 20px auto; 
 }
 .hero img{
@@ -116,17 +115,76 @@ body{
   line-height:1.1;
 }
 
-/* Estilo para a seção do texto da reportagem (usada para Grande Reportagem, Perfil, Patrocinada) */
+/* Estilo para a seção do texto das matérias */
 .report-content {
   max-width: 800px; /* Largura ideal para leitura */
-  margin: 40px auto;
+  margin: 40px auto 0 auto; /* Margem inferior removida da SECTION */
   padding: 0 16px;
   line-height: 1.6;
   font-size: 1.1rem;
-  /* CORREÇÃO AQUI: Garante que o elemento não seja coberto pelo menu fixo ao rolar */
+  /* CORREÇÃO PARA MENU FIXO: Compensa o cabeçalho fixo ao rolar para o ID */
   scroll-margin-top: 80px; 
 }
 
+/* --- ESTILOS DO LER MAIS / LER MENOS --- */
+
+/* Estilo padrão quando a matéria está recolhida */
+.report-content.collapsed {
+  max-height: 360px; /* Limita a altura inicial do texto */
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.35s ease;
+}
+
+/* Gradiente (fade) sobre o texto recolhido */
+.report-content.collapsed::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to top, white, rgba(255,255,255,0));
+  pointer-events: none; /* Permite clicar no botão atrás do fade */
+}
+
+/* Estilo quando a matéria está expandida */
+.report-content.expanded {
+  max-height: none;
+}
+
+.report-content.expanded::after {
+  display: none;
+}
+
+/* Container do botão para centralizar */
+.button-container {
+    max-width: 800px;
+    margin: 0 auto 40px auto; /* Centraliza o container e adiciona margem inferior */
+    padding: 0 16px;
+}
+
+/* Estilização do Botão "Ler mais" */
+.ler-mais {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.ler-mais:hover {
+  background: #333;
+}
+
+
+/* Títulos */
 .report-content h2 {
   font-size: 2.2rem;
   margin-bottom: 20px;
@@ -152,7 +210,7 @@ body{
   color: #333;
 }
 
-/* Grid of articles */
+/* GRID */
 .grid{
   max-width:var(--max-width);
   margin:20px auto;
@@ -160,7 +218,6 @@ body{
   grid-template-columns:1fr 1fr 380px;
   gap:20px;
   padding:0 16px 60px;
-  /* CORREÇÃO AQUI: Garante que o elemento não seja coberto pelo menu fixo ao rolar */
   scroll-margin-top: 80px; 
 }
 
@@ -206,13 +263,12 @@ body{
   color:var(--muted);
 }
 
-/* Estilo para o Botão "Voltar ao Topo" */
+/* Botão Voltar ao topo */
 .back-to-top {
   position: fixed;
   bottom: 20px; 
   right: 20px; 
   z-index: 100; 
-  /* ESCONDIDO POR PADRÃO, VISÍVEL VIA JS */
   display: none; 
 }
 
@@ -256,4 +312,6 @@ body{
   .hero img{height:200px} 
   .hero-overlay{left:12px;right:12px;max-width:unset}
   .report-content {font-size: 1rem;}
+  /* Centraliza o botão em telas menores */
+  .ler-mais { max-width: 90%; }
 }
