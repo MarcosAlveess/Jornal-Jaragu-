@@ -126,6 +126,136 @@ body{
   scroll-margin-top: 80px; 
 }
 
+/* --- Estilos para Imagens Flutuantes no Texto --- */
+.report-content .text-flow {
+    /* Faz a imagem flutuar para a direita */
+    float: right; 
+    
+    /* Largura da imagem em relação à largura do texto */
+    width: 40%; 
+    max-width: 300px;
+    
+    /* Adiciona margem para separar do texto e do lado direito */
+    margin: 0 0 10px 20px; 
+    
+    /* Borda suave para estética */
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    height: auto; /* Garante que a altura se ajuste */
+}
+
+/* Limpa a flutuação após a imagem para que o próximo elemento (como <h4> ou <h3>) não suba */
+.report-content h4, .report-content h3 {
+    clear: both;
+}
+
+/* Ajuste para telas pequenas (Mobile) */
+@media (max-width: 700px) {
+    /* Repete o bloco @media para garantir que as novas regras de mobile sejam aplicadas */
+    body {
+        padding-top: 100px; 
+    }
+    .header-container {
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+    }
+    .main-nav button{display:inline-block}
+    .main-nav ul{display:none;flex-direction:column;background:#fff;padding:10px;border-radius:8px;position:absolute;right:0;top:48px;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+    .main-nav ul.open{display:flex}
+    .grid{grid-template-columns:1fr; padding-bottom:40px}
+    .hero img{height:200px} 
+    .hero-overlay{left:12px;right:12px;max-width:unset}
+    .report-content {font-size: 1rem;}
+    /* Centraliza o botão em telas menores */
+    .ler-mais { max-width: 90%; }
+    
+    /* REGRA PRINCIPAL PARA MOBILE: Imagem de texto ocupa 100% e não flutua */
+    .report-content .text-flow {
+        float: none; /* Remove a flutuação */
+        display: block;
+        width: 100%; 
+        max-width: 100%;
+        margin: 20px 0; 
+    }
+}
+
+/* --- Estilos para Imagem de Largura Total em Matérias --- */
+.report-content .full-width-img {
+    /* Ocupa 100% da largura do contêiner de texto (max 800px) */
+    width: 100%;
+    height: auto;
+    
+    /* Adiciona margem superior e inferior para separação do texto */
+    margin: 30px 0; 
+    display: block;
+    object-fit: cover;
+}
+
+/* --- Estilos para Imagens Flutuantes no Texto (já existentes, mas críticos) --- */
+.report-content .text-flow {
+    /* Faz a imagem flutuar para a direita (como no layout de revista) */
+    float: right; 
+    
+    /* Largura da imagem em relação à largura do texto */
+    width: 40%; 
+    max-width: 300px;
+    
+    /* Adiciona margem para separar do texto e do lado direito */
+    margin: 0 0 10px 20px; 
+    
+    /* Borda suave para estética */
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    height: auto; /* Garante que a altura se ajuste */
+}
+
+/* Limpa a flutuação após a imagem para que o próximo elemento (como <h4> ou <h3>) não suba */
+.report-content h4, .report-content h3 {
+    clear: both;
+}
+
+/* Ajuste para telas pequenas (Mobile) para a imagem flutuante */
+@media (max-width: 700px) {
+    .report-content .text-flow {
+        float: none; /* Remove a flutuação */
+        display: block;
+        width: 100%; /* Ocupa a largura total */
+        max-width: 100%;
+        margin: 20px 0; /* Centraliza verticalmente */
+    }
+}
+
+/* --- Estilos para Imagem de Largura Total em Matérias --- */
+.report-content .full-width-img {
+    /* Ocupa 100% da largura do contêiner de texto (max 800px) */
+    width: 100%;
+    height: auto;
+    
+    /* Adiciona margem superior e inferior para separação do texto */
+    margin: 30px 0; 
+    display: block;
+    object-fit: cover;
+}
+
+/* --- Estilos para a Charge (Técnico Motivacional) --- */
+.report-content .charge-img {
+    display: block; /* Garante que 'margin: auto' funcione para centralizar */
+    width: 70%;     /* Define uma largura menor, por exemplo, 70% da coluna de texto */
+    max-width: 500px; /* Limita o tamanho máximo em telas muito grandes */
+    height: auto;
+    margin: 30px auto; /* Centraliza a imagem horizontalmente e adiciona margem vertical */
+    object-fit: contain; /* Garante que a imagem não seja cortada */
+}
+
+/* Ajuste para telas pequenas (Mobile) para garantir que ainda pareça bom */
+@media (max-width: 700px) {
+    .report-content .charge-img {
+        width: 90%; /* Aumenta a largura em mobile para ocupar melhor a tela */
+        margin: 20px auto; 
+    }
+}
+
 /* --- ESTILOS DO LER MAIS / LER MENOS --- */
 
 /* Estilo padrão quando a matéria está recolhida */
@@ -289,6 +419,55 @@ body{
   background: #333; 
 }
 
+/* --- Estilos do Expediente (Grid de Fotos) --- */
+
+.team-grid {
+    display: grid;
+    /* 3 colunas em telas grandes, ou ajusta para 2 ou 1 em telas menores */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin: 40px auto;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.team-member {
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+.profile-pic {
+    width: 140px; /* Tamanho da foto */
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%; /* Torna a imagem redonda */
+    margin-bottom: 10px;
+    border: 3px solid var(--accent);
+}
+
+.team-member p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+    line-height: 1.3;
+}
+
+.team-function {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.team-ra {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+/* Garante que o .report-content ainda se aplique à seção Expediente */
+#expediente-full {
+    max-width: 1100px; /* Use a largura máxima para o Expediente */
+    margin: 40px auto;
+}
 
 /* Responsive */
 @media (max-width:900px){
